@@ -40,7 +40,7 @@ public class AppRate extends CordovaPlugin {
       }
       if (action.equals("launchReview")) {
         Activity activity = this.cordova.getActivity();
-        ReviewManager manager = ReviewManagerFactory.create(activity);
+        ReviewManager manager = new FakeReviewManager(activity);
         Task<ReviewInfo> request = manager.requestReviewFlow();
         request.addOnCompleteListener(task -> {
           if (task.isSuccessful()) {
